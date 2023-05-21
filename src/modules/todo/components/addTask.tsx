@@ -9,6 +9,7 @@ import { todoStore } from "../../../store/todo";
 const AddTask = () => {
     const [open, setOpen] = useState(false);
     const [taskItem, setTaskItem] = useState({title:'',body:''})
+    console.log("🚀 ~ file: addTask.tsx:12 ~ AddTask ~ taskItem:", taskItem)
     const [body, setBody] = useState('')
     console.log("🚀 ~ file: addTask.tsx:13 ~ AddTask ~ body:", body)
 
