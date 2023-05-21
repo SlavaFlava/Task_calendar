@@ -10,6 +10,7 @@ const AddTask = () => {
     const [open, setOpen] = useState(false);
     const [taskItem, setTaskItem] = useState({title:'',body:''})
     const [body, setBody] = useState('')
+    console.log("🚀 ~ file: addTask.tsx:13 ~ AddTask ~ body:", body)
 
 
     return (
