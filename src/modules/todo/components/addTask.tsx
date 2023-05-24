@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Button, TextField } from "@mui/material"
+import { todoStore } from "../../../store/todo";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { todoStore } from "../../../store/todo";
+
 
 const AddTask = () => {
     const [open, setOpen] = useState(false);
-    const [taskItem, setTaskItem] = useState({title:'',body:''})
-    console.log("🚀 ~ file: addTask.tsx:12 ~ AddTask ~ taskItem:", taskItem)
+    const [taskItem, setTaskItem] = useState({ title: '', body: '' })
+
     const [body, setBody] = useState('')
-    console.log("🚀 ~ file: addTask.tsx:13 ~ AddTask ~ body:", body)
+
 
 
     return (
@@ -35,13 +36,13 @@ const AddTask = () => {
                     <TextField
                         fullWidth
                         value={taskItem.title}
-                        onChange={e => setTaskItem({...taskItem, title: e.target.value}) }
+                        onChange={e => setTaskItem({ ...taskItem, title: e.target.value })}
                         label='Task name'
                         sx={{ mb: 2, mt: 1 }}
                     />
                     <TextField
                         fullWidth
-                        onChange={e => setTaskItem({...taskItem, body: e.target.value}) }
+                        onChange={e => setTaskItem({ ...taskItem, body: e.target.value })}
                         value={taskItem.body}
                         label='Task description'
                     />
@@ -53,10 +54,10 @@ const AddTask = () => {
                         Cancel
                     </Button>
                     <Button variant='outlined'
-                        onClick={() =>{ 
+                        onClick={() => {
                             setOpen(true);
                             todoStore.addNewTask(taskItem)
-                            setTaskItem({title:'',body:''})  
+                            setTaskItem({ title: '', body: '' })
                         }}
                     >
                         Ok

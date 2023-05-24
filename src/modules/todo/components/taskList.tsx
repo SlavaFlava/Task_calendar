@@ -1,17 +1,21 @@
 import { Box } from '@mui/material'
-import React from 'react'
 import TaskItem from './taskItem'
 import { todoStore } from '../../../store/todo'
 import { observer } from 'mobx-react'
+import { useEffect } from 'react'
 
 
 
-const TaskList = observer( () => {
+const TaskList = observer(() => {
+
+
+
+
     return (
         <Box my={2.5} >
             {
                 todoStore.todosArray.map((task) => (
-                    <TaskItem title={task.title} body={task.body} key={task.title}/>
+                    <TaskItem title={task.title} body={task.body} key={task.title} />
                 ))
             }
 

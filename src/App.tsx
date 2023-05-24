@@ -1,17 +1,17 @@
 
 import { Grid, ThemeProvider, Box } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 import Sidebar from "./modules/sidebar";
 import Dashboard from "./modules/dashboard";
-import { Routes, Route } from "react-router-dom";
 import Todo from "./modules/todo";
 import Themes from "./modules/themes";
 import Notes from "./modules/notes";
-import { observer } from "mobx-react-lite";
 import ThemeStore from "../src/store/theme";
 
 
-const App = observer(() => {
 
+const App = observer(() => {
 
 
   return (
