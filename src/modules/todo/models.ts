@@ -1,4 +1,6 @@
 export interface ItaskItem {
     title: string,
-    body: string
+    body: string,
+    id?: number,
+    status?: boolean,
 }

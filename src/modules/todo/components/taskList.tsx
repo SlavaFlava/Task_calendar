@@ -15,7 +15,7 @@ const TaskList = observer(() => {
         <Box my={2.5} >
             {
                 todoStore.todosArray.map((task) => (
-                    <TaskItem title={task.title} body={task.body} key={task.title} />
+                    <TaskItem title={task.title} body={task.body} key={task.id} id={task.id} status={task.status}/>
                 ))
             }
 
