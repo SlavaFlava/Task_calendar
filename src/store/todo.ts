@@ -7,6 +7,8 @@ class TodoStore {
     makeAutoObservable(this)
   }
 
+  filterTasks: null | boolean = null 
+
   todosArray: ItaskItem[] = (localStorage.getItem('todo')) == null
     ? []
     : JSON.parse(localStorage.getItem('todo') || '')
@@ -29,7 +31,7 @@ class TodoStore {
         e.status = !e.status
       } 
     })
-    console.log(toJS(this.todosArray));
+   
     
     localStorage.setItem('todo', JSON.stringify(this.todosArray))
   }
@@ -39,7 +41,12 @@ class TodoStore {
     this.todosArray = this.todosArray.filter(e => e.id !== id)
     localStorage.setItem('todo', JSON.stringify(this.todosArray))
   }
+
+filteredTasks(filter:null | boolean){
+  this.filterTasks = filter
+}
+
 }
 
 const todoStore = new TodoStore()
-export { todoStore } 
+export { todoStore }  
