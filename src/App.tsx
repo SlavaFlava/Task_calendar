@@ -9,6 +9,7 @@ import Themes from "./modules/themes";
 import Notes from "./modules/notes";
 import ThemeStore from "../src/store/theme";
 import TodoCalendar from "./modules/calendar";
+import Profile from "./modules/profile";
 
 
 
@@ -53,6 +54,7 @@ const App = observer(() => {
                 <Routes>
                   <Route path='/' element={<Todo />} />
                   <Route path='/themes' element={<Themes />} />
+                  <Route path='/profile' element={<Profile />} />
                   <Route path='/notes' element={<Notes />} />
                 </Routes>
               </Grid>

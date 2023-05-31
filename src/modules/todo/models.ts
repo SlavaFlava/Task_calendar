@@ -3,4 +3,5 @@ export interface ItaskItem {
     body: string,
     id?: number,
     status?: boolean,
+    date?: string,
 }

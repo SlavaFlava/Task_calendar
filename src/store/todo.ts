@@ -7,32 +7,42 @@ class TodoStore {
     makeAutoObservable(this)
   }
 
-  filterTasks: null | boolean = null 
+  currentDate = new Date().toDateString()
+
+
+  filterTasks: null | boolean = null
 
   todosArray: ItaskItem[] = (localStorage.getItem('todo')) == null
     ? []
     : JSON.parse(localStorage.getItem('todo') || '')
 
 
-  addNewTask(taskItem: ItaskItem) {
+  setCurrentDate(date: string) {
+    this.currentDate = date
+
+  }
+
+ 
+  addNewTask(taskItem: { title: string, body: string }) {
     const newTask: ItaskItem = {
       ...taskItem,
       status: true,
       id: Date.now(),
+      date: this.currentDate
     }
     this.todosArray.push(newTask)
     localStorage.setItem('todo', JSON.stringify(this.todosArray))
   }
 
   changeStatusTask(id: number | undefined) {
-  
+
     this.todosArray.map((e) => {
-      if (e.id == id) {
+      if (e.id == id) { 
         e.status = !e.status
-      } 
+      }
     })
-   
-    
+
+
     localStorage.setItem('todo', JSON.stringify(this.todosArray))
   }
 
@@ -42,9 +52,9 @@ class TodoStore {
     localStorage.setItem('todo', JSON.stringify(this.todosArray))
   }
 
-filteredTasks(filter:null | boolean){
-  this.filterTasks = filter
-}
+  filteredTasks(filter: null | boolean) {
+    this.filterTasks = filter
+  }
 
 }
 

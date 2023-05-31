@@ -1,8 +1,10 @@
 import { Avatar, Box, Typography } from "@mui/material";
+import { todoStore } from "../../store/todo";
+import { observer } from "mobx-react";
 
 
 
-const Dashboard = () => {
+const Dashboard = observer( () => {
   return (
     <Box
       display={'flex'}
@@ -19,7 +21,7 @@ const Dashboard = () => {
         color={'secondary.main'}
         fontWeight={500}
       >
-        Wed May 03 2023
+       {todoStore.currentDate}
       </Typography>
       <Box
       display={'flex'}
@@ -49,6 +51,6 @@ const Dashboard = () => {
       </Box>
     </Box>
   );
-};
+});
 
 export default Dashboard;
