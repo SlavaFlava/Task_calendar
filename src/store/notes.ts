@@ -5,24 +5,28 @@ import { blueGrey, orange, purple ,teal} from "@mui/material/colors"
 
 class NoteStore {
     constructor() {
-        makeAutoObservable(this)
+        makeAutoObservable(this) 
     }
 
     notesArray: ICategory[] = [
         {
-            name: 'game',
+            categoryUrl:'game',
+            name: 'Game',
             color: purple[400],
         },
         {
-            name: 'child',
+            categoryUrl:'my child',
+            name: 'My child',
             color: teal[600],
         },
         {
-            name: 'work',
+            categoryUrl:'work',
+            name: 'Work',
             color: orange[400],
         },
         {
-            name: 'food',
+            categoryUrl:'food',      
+            name: 'Food',
             color: blueGrey[500],
         },
     ]

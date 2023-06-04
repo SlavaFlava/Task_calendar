@@ -22,7 +22,7 @@ const Notes = observer(() => {
             borderRadius:'10px',
           }}>
             <NavLink
-            to={`./${e.name.toLowerCase()}`}
+            to={`./${e.categoryUrl}`}
             style={{
               position:'absolute',
               width:'100%',

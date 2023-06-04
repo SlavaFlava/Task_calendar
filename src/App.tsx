@@ -11,6 +11,9 @@ import ThemeStore from "../src/store/theme";
 import TodoCalendar from "./modules/calendar";
 import Profile from "./modules/profile";
 
+import NoteDetails from "./modules/notes/note-details";
+import Note from "./modules/notes/note";
+
 
 
 const App = observer(() => {
@@ -38,7 +41,7 @@ const App = observer(() => {
             pt={4}
             bgcolor={"primary.main"}
           >
-            <Sidebar  />
+            <Sidebar />
           </Grid>
           <Grid item xs={12} sm={8} md={9} lg={10}
             p={5}
@@ -55,11 +58,17 @@ const App = observer(() => {
                   <Route path='/' element={<Todo />} />
                   <Route path='/themes' element={<Themes />} />
                   <Route path='/profile' element={<Profile />} />
-                  <Route path='/notes' element={<Notes />} />
+                  <Route path='/notes' >
+                    <Route index element={<Notes />} />
+                    <Route path=':noteCategory'>
+                      <Route index element={<Note />} />
+                      <Route path=':noteDetails' element={<NoteDetails />} />
+                    </Route>
+                  </Route>
                 </Routes>
               </Grid>
               <Grid item md={12} lg={4}>
-              <TodoCalendar/>
+                <TodoCalendar />
               </Grid>
             </Grid>
 
