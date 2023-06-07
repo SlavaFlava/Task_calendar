@@ -23,7 +23,7 @@ const AddTask = () => {
       </Button>
       <Dialog
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={() => setOpen(false)} 
         maxWidth={'sm'}
         fullWidth={true}
       >
