@@ -1,15 +1,15 @@
 import { SvgIcon, Typography } from "@mui/material"
 import { ICategory } from "./models"
 import IconsArray from "./icons"
-import Colors from "./colors"
+
 
 
 
 const CategoryNotes = ({ name, color, icon }: ICategory) => {
   return (
     <>
-     <SvgIcon sx={{color:Colors[color], fontSize:'45px',mb:3}}>{IconsArray[icon]}</SvgIcon>
-      <Typography color={Colors[color]} variant={'h5'} fontWeight={'600'} textTransform={'uppercase'}>
+     <SvgIcon sx={{color:color, fontSize:'45px',mb:3}}>{IconsArray[icon]}</SvgIcon>
+      <Typography color={color} variant={'h5'} fontWeight={'600'} textTransform={'uppercase'}>
         {name}
       </Typography>
     </>

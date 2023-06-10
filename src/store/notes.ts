@@ -8,36 +8,44 @@ import { ICategory } from "../modules/notes/components/models"
 
 class NoteStore {
     constructor() {
-        makeAutoObservable(this) 
+        makeAutoObservable(this)
     }
+   
 
     notesArray: ICategory[] = [
         {
-            icon:3,
-            categoryUrl:'game',
+            icon: 3,
+            categoryUrl: 'game',
             name: 'Game',
-            color: 0,
+            color:  '#80A3FF',
         },
         {
-            icon:6,
-            categoryUrl:'my child',
+            icon: 6,
+            categoryUrl: 'my child',
             name: 'My child',
-            color: 1,
+            color: '#FDBE7E',
         },
         {
-            icon:2,
-            categoryUrl:'work',
+            icon: 2,
+            categoryUrl: 'work',
             name: 'Work',
-            color: 3,
+            color:  '#F9A090',
         },
         {
-            icon:1,
-            categoryUrl:'food',      
+            icon: 1,
+            categoryUrl: 'food',
             name: 'Food',
-            color: 4,
+            color: '#6DD28C',
         },
     ]
+
+    addNote(note: ICategory) {
+     
+      this.notesArray =[...this.notesArray, note]
+      
+      //  this.notesArray.push(note)
+    }
 }
 
 const notesStore = new NoteStore()
-export {notesStore}
+export { notesStore }

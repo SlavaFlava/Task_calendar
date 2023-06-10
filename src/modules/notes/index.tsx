@@ -14,7 +14,7 @@ const Notes = observer(() => {
       <Box display={'flex'} flexWrap={'wrap'} m={'-5px'} >
         {
           notesStore.notesArray.map((e: ICategory) => (
-            <Paper key={useId()} sx={{
+            <Paper key={e.categoryUrl} sx={{
               flexBasis: 'calc(33.3% - 10px)',
               position: 'relative',
               m: '5px',
