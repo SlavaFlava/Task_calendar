@@ -1,14 +1,10 @@
 import { Add, Height } from "@mui/icons-material"
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Fab, Menu, MenuItem, Popover, Stack, SvgIcon, TextField } from "@mui/material"
 import { useId, useState } from "react"
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import PopupState, { bindTrigger, bindPopover, bindMenu } from 'material-ui-popup-state';
 import Colors from "./colors";
 import IconsArray from "./icons";
-import { addEmitHelpers } from "typescript";
 import { notesStore } from "../../../store/notes";
-import { log } from "util";
-
-
 
 const AddCategory = () => {
   const [open, setOpen] = useState(false)
@@ -20,24 +16,28 @@ const AddCategory = () => {
 
   function addNewCategory() {
     setOpen(false)
-    const catUrl = category.trim().replace(' ', '-')
-    notesStore.addNote({
+    const catUrl = category.replaceAll(' ', '-').toLowerCase()
+    notesStore.addNoteCategory({
       icon: categoryIconIndex,
       categoryUrl: catUrl,
-      name: category.trim(),
+      name: category,
       color: colorIcon,
+      notes: [],
     })
   }
 
   return (
     <>
       <Box
-        onClick={() => setOpen(true)}
+        
         display={'flex'}
         justifyContent={'flex-end'}
         mt={2}
       >
-        <Fab color='primary' aria-label='add'>
+        <Fab color='primary' aria-label='add'
+        onClick={() => setOpen(true)}
+        >
+          
           <Add />
         </Fab>
       </Box>
@@ -74,7 +74,7 @@ const AddCategory = () => {
                     }}
                   >
                   </Button>
-                  <Menu {...bindPopover(popupState)}>
+                  <Menu {...bindMenu(popupState)}>
                     {
                       Colors.map(e =>
                         <MenuItem key={e}
@@ -109,7 +109,7 @@ const AddCategory = () => {
                   >
                     <SvgIcon sx={{ fontSize: 40 }}>{categoryIcon}</SvgIcon>
                   </Button>
-                  <Menu {...bindPopover(popupState)}>
+                  <Menu {...bindMenu(popupState)}>
                     {
                       IconsArray.map((e, index) =>
                         <MenuItem key={index}
@@ -134,13 +134,13 @@ const AddCategory = () => {
               )}
             </PopupState>
           </Stack>
-          <Button variant="outlined"
-            onClick={() => {
-              addNewCategory()
-            }}
-          >
-            Add
-          </Button>
+            <Button variant="outlined"
+              onClick={() => {
+                addNewCategory()
+              }}
+            >
+              Add
+            </Button>
         </DialogActions>
       </Dialog >
     </>

@@ -1,49 +1,24 @@
 import { makeAutoObservable } from "mobx"
 import { toJS } from "mobx"
-import { ICategory } from "../modules/notes/components/models"
-
-
-
+import { ICategory, INote } from "../modules/notes/components/models"
 
 
 class NoteStore {
-    constructor() {
-        makeAutoObservable(this)
-    }
-   
+  constructor() {
+    makeAutoObservable(this)
+  }
+  notesArray: ICategory[] = JSON.parse(localStorage.getItem('notes') || '[]')
 
-    notesArray: ICategory[] = [
-        {
-            icon: 3,
-            categoryUrl: 'game',
-            name: 'Game',
-            color:  '#80A3FF',
-        },
-        {
-            icon: 6,
-            categoryUrl: 'my child',
-            name: 'My child',
-            color: '#FDBE7E',
-        },
-        {
-            icon: 2,
-            categoryUrl: 'work',
-            name: 'Work',
-            color:  '#F9A090',
-        },
-        {
-            icon: 1,
-            categoryUrl: 'food',
-            name: 'Food',
-            color: '#6DD28C',
-        },
-    ]
+  addNoteCategory(note: ICategory) {
 
-    addNote(note: ICategory) {
-     
-      this.notesArray =[...this.notesArray, note]
-      
-      //  this.notesArray.push(note)
+    this.notesArray = [...this.notesArray, note]
+    localStorage.setItem("notes", JSON.stringify(this.notesArray))
+    //  this.notesArray.push(note)
+  }
+
+  addNote(newNote: INote){
+    this.notesArray.map((e)=> e.categoryUrl === newNote.parent ? e.notes.push(newNote) : false)
+    localStorage.setItem("notes", JSON.stringify(this.notesArray))
     }
 }
 

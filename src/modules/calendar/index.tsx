@@ -25,7 +25,7 @@ const TodoCalendar = observer(() => {
     >
       <CustomCalendar
         locale={'en'}
-        onChange={() => onChange(value)}
+        onChange={() => onChange(value)} 
         onClickDay={(date: any) => todoStore.setCurrentDate(date.toDateString())}
       />
     </Paper>

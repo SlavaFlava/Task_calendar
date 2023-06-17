@@ -2,7 +2,6 @@ import { Box, Paper } from "@mui/material";
 import { observer } from "mobx-react";
 import { notesStore } from "../../store/notes";
 import { ICategory } from "./components/models";
-import { useId } from "react";
 import { NavLink } from "react-router-dom";
 import CategoryNotes from "./components/category";
 import AddCategory from "./components/addCategory";
@@ -33,7 +32,7 @@ const Notes = observer(() => {
 
                 }}
               >
-                <CategoryNotes name={e.name} color={e.color} icon={e.icon} />
+                <CategoryNotes name={e.name} color={e.color} icon={e.icon} notes={e.notes}/>
               </NavLink>
             </Paper>
           ))
