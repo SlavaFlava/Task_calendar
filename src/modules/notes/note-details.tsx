@@ -35,7 +35,7 @@ const NoteDetails = () => {
       </Box>
        
 
-       <NoteBody color={category.color} body={note.body}/>
+       <NoteBody color={category.color} body={note.body} category={category.categoryUrl} name={note.noteUrl}/>
 
 
 

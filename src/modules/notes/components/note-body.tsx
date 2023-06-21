@@ -3,14 +3,15 @@ import { useState } from "react"
 import { IBody } from "./models"
 import { Edit, Save } from "@mui/icons-material"
 import MDEditor from "@uiw/react-md-editor"
+import { notesStore } from "../../../store/notes"
 
 
 
 
-const NoteBody = ({ color, body }: IBody) => {
+const NoteBody = ({ color, body:initBody, category, name }: IBody) => {
 
   const [edit, setEdit] = useState(true)
-  const [value, setValue] = useState(() => body)
+  const [body, setValue] = useState(() => initBody)
 
   return (
     <>
@@ -32,7 +33,7 @@ const NoteBody = ({ color, body }: IBody) => {
               </Typography>
             </Box>
             :
-            <Box onClick={() => setEdit(!edit)}
+            <Box onClick={() => (notesStore.saveNote({category, name, body}), setEdit(!edit))}
               display={'flex'} alignItems={'center'} mb={2} ml={1.5} sx={{ cursor: 'pointer' }}>
               <SvgIcon sx={{
                 color: color,
@@ -50,10 +51,10 @@ const NoteBody = ({ color, body }: IBody) => {
       {
         edit
           ?
-          <MDEditor.Markdown source={value} />
+          <MDEditor.Markdown source={body} />
           :
           <MDEditor
-            value={value}
+            value={body}
             onChange={(val) => {
               setValue(val!)
             }}

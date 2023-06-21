@@ -32,7 +32,7 @@ const Notes = observer(() => {
 
                 }}
               >
-                <CategoryNotes name={e.name} color={e.color} icon={e.icon} notes={e.notes}/>
+                <CategoryNotes name={e.name} color={e.color} icon={e.icon} notes={e.notes} categoryUrl={e.categoryUrl}/>
               </NavLink>
             </Paper>
           ))

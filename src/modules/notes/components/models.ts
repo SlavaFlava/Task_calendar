@@ -7,12 +7,14 @@ export interface INote {
 }
 export interface ICategory {
   icon: number,
-  categoryUrl?: string,
+  categoryUrl: string,
   name: string,
   color: string,
   notes: INote[]
 }
 export interface IBody {
-  color: string,
-  body: string
+  color?: string,
+  body: string,
+  category: string,
+  name: string,
 }
