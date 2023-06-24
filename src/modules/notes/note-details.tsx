@@ -5,7 +5,6 @@ import { toJS } from "mobx";
 import IconsArray from './components/icons';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import ChevronRight from '@mui/icons-material/ChevronRight';
-import CategoryNotes from './components/category';
 import NoteBody from './components/note-body';
 
 const NoteDetails = () => {
@@ -29,7 +28,7 @@ const NoteDetails = () => {
         </Typography>
       </Box>
       <Box my={2}>
-        <Typography variant={'h5'}>
+        <Typography variant={'h5'}> 
           {note.title}
         </Typography>
       </Box>
